@@ -24,22 +24,22 @@ public class MainActivity extends AppCompatActivity {
         int tag = Integer.parseInt(v.getTag().toString());
         imageClicked=gameState[tag];
 
-        if(!isWinner && imageClicked==-1) {
+        if(!isWinner && imageClicked== -1) {
 
             if (player == 1) {
                 v.setImageResource(R.drawable.cross);
                 gameState[tag] = player;
-                Toast.makeText(this, tag + " " + "Cross", Toast.LENGTH_SHORT).show();
-                player = 0;
+                Toast.makeText(this, tag + " Cross", Toast.LENGTH_SHORT).show();
+                player = 0; //Circle Player
             } else {
                 v.setImageResource(R.drawable.zero);
                 gameState[tag] = player;
-                Toast.makeText(this, tag + " " + "Zero", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, tag + " Circle", Toast.LENGTH_SHORT).show();
                 player = 1;
             }
             for (int[] winningState : winningStates) {
-                if (gameState[winningState[0]] == gameState[winningState[1]] && gameState[winningState[1]] == gameState[winningState[2]] && gameState[winningState[0]] > -1) {
-                    Toast.makeText(this, "The Winner is " + (player == 0 ? 1 : 0), Toast.LENGTH_SHORT).show();
+                if (gameState[winningState[0]] == gameState[winningState[1]] && gameState[winningState[1]] == gameState[winningState[2]] && gameState[winningState[0]] > -1){
+                    Toast.makeText(this, "Winner is " + (player == 0 ? 1 : 0), Toast.LENGTH_SHORT).show();
                     isWinner = true;
                 }
             }
